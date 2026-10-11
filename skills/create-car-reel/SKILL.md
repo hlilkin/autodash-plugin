@@ -48,7 +48,7 @@ For a different look, call `list_templates`, let the user pick, and set it with 
 Do not call `start_render` until the user explicitly asks to render. Check that `get_project` reports `readiness.ready` as true first. If it is not ready, tell the user what is missing.
 
 - A new reel uses one existing credit. If the render fails, the credit is refunded.
-- Call `start_render` with the `project_id` and the same `request_id` you used for `create_project`. On a retry, reuse that same `request_id` so the same render is returned and no second credit is spent.
+- Call `start_render` with the `project_id` and a new UUID `request_id` for this render. On a retry of the same render, reuse that `request_id` so the same render is returned and no second credit is spent. A new reel of the same project needs a new `request_id`.
 - An account can have one active render at a time. If one is already running, wait for it.
 - Poll `get_render_status` with the `render_id` up to 12 times, five seconds apart. If it is still running after that, tell the user and check again when they ask.
 
@@ -62,6 +62,7 @@ When the render is done, share the full-size download link as visible text in yo
 - `rate_limited`: wait a moment, then retry.
 - `storage_limit`: the account is out of storage. Tell the user to free space on [autodashapp.com](https://autodashapp.com).
 - `project_limit`: the account holds 25 projects. Tell the user to delete one on [autodashapp.com](https://autodashapp.com), then continue.
+- `active_render`: another render is still running on this account. Wait for it to finish.
 - `insufficient_credits`: stop. Send the user to [autodashapp.com](https://autodashapp.com) to buy credits.
 
 ## Never
