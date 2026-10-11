@@ -1,0 +1,21 @@
+{
+  "name": "autodash",
+  "displayName": "AutoDash",
+  "version": "1.0.0",
+  "description": "Turn a car listing link and five of your photos into a 20-second vertical video reel on your connected AutoDash account. One credit per new reel.",
+  "author": {
+    "name": "Hristo Lilkin"
+  },
+  "homepage": "https://autodashapp.com",
+  "repository": "https://github.com/hlilkin/autodash-plugin",
+  "license": "MIT",
+  "category": "integrations",
+  "tags": ["autodash", "automotive", "car", "video", "reels", "mcp"],
+  "keywords": ["automotive", "car", "video", "reels", "dealership", "mcp"],
+  "logo": "assets/logo.png",
+  "skills": [
+    "skills/create-car-reel",
+    "skills/autodash-account"
+  ],
+  "rules": "rules/reel-credits.mdc"
+}

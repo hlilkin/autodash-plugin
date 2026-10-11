@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "autodash": {
+      "type": "http",
+      "url": "https://autodashapp.com/api/mcp"
+    }
+  }
+}
