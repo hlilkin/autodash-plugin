@@ -9,7 +9,7 @@ Form: [x.ai/bot/marketplace/submit-a-plugin](https://x.ai/bot/marketplace/submit
 | Form field | Value |
 | --- | --- |
 | First Name / Last Name | Hristo / Lilkin |
-| Work Email | hristo@autodashapp.com (the contact on AutoDash's privacy, terms, and about pages) |
+| Work Email | hristo@autodashapp.com (the contact on AutoDash's privacy, terms, and about pages; it receives mail) |
 | Organization Name | AutoDash |
 | Organization Handle (lowercase, no spaces, 40 characters max) | `autodash` |
 | Website URL (optional) | https://autodashapp.com |
@@ -18,10 +18,10 @@ Form: [x.ai/bot/marketplace/submit-a-plugin](https://x.ai/bot/marketplace/submit
 | MCP Server URL or Public GitHub Repository | https://github.com/hlilkin/autodash-plugin (the full package: skills, rule, `mcp.json`). The MCP URL alone is `https://autodashapp.com/api/mcp`. |
 | Brief Description | Turn a car listing link and five of your photos into a 20-second vertical video reel on your connected AutoDash account. One credit per new reel. |
 
-Testing instructions (460 characters, limit 600):
+Testing instructions (496 characters, limit 600):
 
 ```text
-Sign up free at autodashapp.com: 5 free credits, no card. In Grok Bot send "Add this MCP server: https://autodashapp.com/api/mcp", tap Authorize, sign in with that account and approve. Send a public car listing link and attach five car photos. Review the project, then say "Render it" (1 credit). You get a 20-second 1080x1920 MP4 link. Cursor: add the URL to ~/.cursor/mcp.json, or clone the repo to ~/.cursor/plugins/local/autodash and sign in when prompted.
+Sign up free at autodashapp.com: 5 free credits, no card. In Grok Bot send "Add this MCP server: https://autodashapp.com/api/mcp", tap Authorize, sign in with that account and approve. Paste an AutoScout24 car listing link (other sites may not import) and attach five car photos. Review the project, then say "Render it" (1 credit). You get a 20-second 1080x1920 MP4 link. Cursor: add the URL to ~/.cursor/mcp.json, or clone the repo to ~/.cursor/plugins/local/autodash and sign in when prompted.
 ```
 
 Before ticking "tested locally and in-app", run a fresh sign-in, listing import, five-photo upload, and render on the final commit, in Grok Bot and in Cursor. A render spends one credit, and a new account has 5.

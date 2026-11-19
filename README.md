@@ -9,7 +9,7 @@ The MIT license covers this package: the manifest, skills, rule, logo, and docs.
 ## What it does
 
 - Turns a car listing link and five of your photos into a silent 20-second vertical MP4 (1080×1920) video reel on your connected AutoDash account.
-- Reads the details from the listing link, asks only for what is missing, and writes captions in your language (English, Bulgarian, German, French, Spanish, Italian, Dutch, or Polish).
+- Reads the details from the listing link (AutoScout24 links import; some other sites are blocked or fail, and then you enter the details by hand), asks only for what is missing, and writes captions in your language (English, Bulgarian, German, French, Spanish, Italian, Dutch, or Polish).
 - Lets you review the project, reorder the photos, edit captions, and pick a style before anything is rendered.
 - Renders only when you ask. One new reel uses one credit.
 - Finds your earlier projects and reels, and refreshes expired download links for free.

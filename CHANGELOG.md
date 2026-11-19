@@ -7,6 +7,7 @@ All notable changes to this plugin will be documented here.
 - Logo: 1024×1024 PNG with the plate filled to all four edges (opaque), as the xAI plugin form asks for a logo on a background plate.
 - README: the repo is no longer described as a published Cursor Marketplace plugin. States the 5 free sign-up credits, the silent 1080×1920 MP4 output, and that stored photos and reels stay until you delete them. Grok Bot steps use xAI's current Connect apps label.
 - Skills: `show_render_results` takes `render_ids`. The upload step sends every returned header and checks for a 2xx response. Starter credits stated as 5.
+- Listing sites: README and the create-car-reel skill say AutoScout24 links import and what to do when a site is blocked.
 - `SUBMISSION.md`: xAI plugin form values and testing instructions. Drops the claim that Grok Bot lists only through the Cursor Marketplace.
 
 ## 1.0.0 — 2026-10-11
