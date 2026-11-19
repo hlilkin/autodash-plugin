@@ -1,7 +1,7 @@
 {
   "name": "autodash",
   "displayName": "AutoDash",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Turn a car listing link and five of your photos into a 20-second vertical video reel on your connected AutoDash account. One credit per new reel.",
   "author": {
     "name": "Hristo Lilkin"

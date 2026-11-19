@@ -11,7 +11,7 @@ Use this skill for setup, credit, and history questions. Making a new reel belon
 
 Call `get_guide` when the user is connecting for the first time or asks what the plugin can do.
 
-Connecting requires an AutoDash account. The consent page sends the user through AutoDash sign-in. Someone without an account creates one on [autodashapp.com](https://autodashapp.com) first. New accounts receive the same starter grant as the website.
+Connecting requires an AutoDash account. The consent page sends the user through AutoDash sign-in. Someone without an account creates one on [autodashapp.com](https://autodashapp.com) first. New accounts receive 5 free credits, no card needed, the same as on the website.
 
 ## Credits
 
@@ -23,7 +23,7 @@ There is no purchase tool. Send the user to [autodashapp.com](https://autodashap
 
 - `list_projects` shows the account's projects. `get_project` shows one, and `show_project` displays it.
 - `list_recent_renders` lists recent reels.
-- `show_render_results` takes `render_ids` and returns fresh download links. Signed links expire, and refreshing them is free. Share the full-size link as visible text.
+- `show_render_results` takes `render_ids` (a list of up to ten IDs, so split a longer list) and returns fresh download links. Signed links expire, and refreshing them is free. Share the full-size link as visible text.
 
 An account can hold 25 projects. At the limit the user deletes one on [autodashapp.com](https://autodashapp.com) before starting another.
 

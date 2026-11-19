@@ -1,34 +1,62 @@
-# Submission checklist
+# Submission notes
 
-The operator completes this. Nothing in this file is a secret.
+Notes for the owner when listing this plugin. Nothing in this file is a secret. Last reviewed 19 November 2026.
+
+## xAI plugin form (Grok Bot and Cursor)
+
+Form: [x.ai/bot/marketplace/submit-a-plugin](https://x.ai/bot/marketplace/submit-a-plugin). It distributes a plugin or MCP server to Grok Bot and Cursor users after review. Merge the pull request that replaces the logo first, and check that the raw logo URL below serves the 1024×1024 opaque PNG before you submit.
+
+| Form field | Value |
+| --- | --- |
+| First Name / Last Name | Hristo / Lilkin |
+| Work Email | hristo@autodashapp.com (the contact on AutoDash's privacy, terms, and about pages; it receives mail) |
+| Organization Name | AutoDash |
+| Organization Handle (lowercase, no spaces, 40 characters max) | `autodash` |
+| Website URL (optional) | https://autodashapp.com |
+| Logotype URL (1:1 PNG, opaque plate) | https://raw.githubusercontent.com/hlilkin/autodash-plugin/main/assets/logo.png |
+| Where do you want to be listed? | Grok Bot and Cursor |
+| MCP Server URL or Public GitHub Repository | https://github.com/hlilkin/autodash-plugin (the full package: skills, rule, `mcp.json`). The MCP URL alone is `https://autodashapp.com/api/mcp`. |
+| Brief Description | Turn a car listing link and five of your photos into a 20-second vertical video reel on your connected AutoDash account. One credit per new reel. |
+
+Testing instructions (496 characters, limit 600):
+
+```text
+Sign up free at autodashapp.com: 5 free credits, no card. In Grok Bot send "Add this MCP server: https://autodashapp.com/api/mcp", tap Authorize, sign in with that account and approve. Paste an AutoScout24 car listing link (other sites may not import) and attach five car photos. Review the project, then say "Render it" (1 credit). You get a 20-second 1080x1920 MP4 link. Cursor: add the URL to ~/.cursor/mcp.json, or clone the repo to ~/.cursor/plugins/local/autodash and sign in when prompted.
+```
+
+Before ticking "tested locally and in-app", run a fresh sign-in, listing import, five-photo upload, and render on the final commit, in Grok Bot and in Cursor. A render spends one credit, and a new account has 5.
 
 ## Cursor Marketplace
 
-Submit the public repository at [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish). Cursor reviews the listing and every later update before it ships.
+The package was submitted at [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) on 12 October 2026 and is not listed. The xAI form above is the route this file documents. Package checks (sources: [Plugins](https://cursor.com/docs/plugins), [reference](https://cursor.com/docs/reference/plugins), [manifest schema](https://raw.githubusercontent.com/cursor/plugins/main/schemas/plugin.schema.json)):
 
-- [ ] The repository `https://github.com/hlilkin/autodash-plugin` exists and is public. Marketplace plugins must be open source.
-- [x] `.cursor-plugin/plugin.json` is valid against Cursor's schema. `name` is `autodash`. No `minClientVersions`, so the plugin is available in both Cursor and Grok Bot.
-- [x] Skills and the rule have the frontmatter the docs require. Paths in the manifest are relative and do not use `..`.
-- [x] `assets/logo.png` is a 512×512 PNG and `logo` points at it.
-- [x] `mcp.json` is the URL and `"type": "http"` only. It has no `auth` block, no client id, no secret, no headers, and no `${VAR}` placeholders. The server supports dynamic client registration, and a static client id would bypass it.
-- [x] This is one plugin. Do not add `.cursor-plugin/marketplace.json`.
-- [x] Validated with `scripts/validate-plugins.mjs` from [github.com/cursor/plugins](https://github.com/cursor/plugins) and `scripts/validate-template.mjs` from [github.com/cursor/plugin-template](https://github.com/cursor/plugin-template).
-- [ ] Test locally: copy the folder to `~/.cursor/plugins/local/autodash`, reload Cursor, and confirm the skills, the rule, and the MCP server under Customize. Teams and Enterprise can disable local plugin imports.
-- [ ] Confirm `autodash` is free in the Cursor Marketplace.
-- [ ] Sign in once from Cursor and from Grok Bot, create a project, upload five photos, and render, to confirm the whole path.
+- [x] The repo is public and MIT-licensed.
+- [x] `.cursor-plugin/plugin.json` parses and its fields match Cursor's manifest schema (checked 19 November 2026). `name` is `autodash` and `repository` is this repo.
+- [x] Skills and the rule have frontmatter. Manifest paths are relative and do not use `..`.
+- [x] `assets/logo.png` is a 1024×1024 PNG on an opaque plate.
+- [x] `mcp.json` is URL-only: no `${VAR}` placeholders, no client secret, no headers, no client id. The server advertises `registration_endpoint`, so no static `auth` block is needed.
+- [ ] Check whether the `autodash` name is available.
 
-## Grok Bot
+## Server facts
 
-Grok Bot installs plugins from its Marketplace. Publish through the Cursor Marketplace steps above. Until it is listed, a user can add the server from chat:
+Checked against production on 19 November 2026.
 
-```text
-Add this MCP server: https://autodashapp.com/api/mcp
-```
-
-On a team, an admin allows `https://autodashapp.com/api/mcp` if the plugin shows Disabled by team admin.
+- Protected resource: `https://autodashapp.com/api/mcp` (`/.well-known/oauth-protected-resource/api/mcp`). The path-less `/.well-known/oauth-protected-resource` still names `https://autodashapp.com/mcp`, which is the older URL.
+- Authorization server: `https://clerk.autodashapp.com`. Metadata at `/.well-known/oauth-authorization-server` advertises `registration_endpoint` (`https://autodashapp.com/oauth/register`), PKCE `S256` only, and scopes `autodash:read`, `autodash:write`, `autodash:render`.
+- An unauthenticated request to `/api/mcp` returns `401` with a `WWW-Authenticate` header that carries `resource_metadata` and `scope="autodash:read autodash:write autodash:render offline_access"`.
+- Privacy policy (15 October 2026) and terms (11 October 2026) are live and name Cursor, Grok Bot, and grok.com.
+- The site advertises five free credits at sign-up, no card required.
 
 ## Listing copy
 
-- Name: AutoDash
-- Short description: Turn a car listing link and five of your photos into a 20-second vertical video reel on your connected AutoDash account. One credit per new reel.
-- Category: integrations
+| Field | Copy |
+| --- | --- |
+| Name | AutoDash |
+| Plugin id | `autodash` |
+| Homepage | https://autodashapp.com |
+| Category | `integrations` |
+| Keywords | automotive, car, video, reels, dealership |
+
+## Keep out of this repo
+
+Service keys, `.env` files, client secrets, tokens, and reviewer prompts.
